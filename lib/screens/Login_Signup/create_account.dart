@@ -174,7 +174,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
         leading: GestureDetector(
           child: Padding(
             padding: const EdgeInsets.only(right: 12.0),
-            child: Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
+            child: Icon(Icons.arrow_back_ios, color: Colors.white),
           ),
           onTap: deleteIncompleteUser,
         ),
