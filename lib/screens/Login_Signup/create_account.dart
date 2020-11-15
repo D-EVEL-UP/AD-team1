@@ -16,10 +16,10 @@ import 'package:provider/provider.dart';
 * the referral user screen */
 
 class CreateProfileScreen extends StatefulWidget {
-  final String photoUrl, email, bio, name, phone;
+  final String photoUrl, email, bio, name, phone, faculty, year, relationshipStatus, interests, favCuisine;
 
   CreateProfileScreen(
-      {this.photoUrl, this.email, this.bio, this.name, this.phone});
+      {this.photoUrl, this.email, this.bio, this.name, this.phone, this.faculty, this.year, this.relationshipStatus, this.interests, this.favCuisine});
 
   @override
   _CreateProfileScreenState createState() => _CreateProfileScreenState();
@@ -32,6 +32,11 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _facultyController = TextEditingController();
+  final TextEditingController _yearController = TextEditingController();
+  final TextEditingController _relationshipStatusController = TextEditingController();
+  final TextEditingController _interestsController = TextEditingController();
+  final TextEditingController _favCuisineController = TextEditingController();
   bool _displayNameValid = true;
   bool _bioValid = true;
 
@@ -42,6 +47,11 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
     _bioController.text = widget.bio;
     _emailController.text = widget.email;
     _phoneController.text = widget.phone;
+    _facultyController.text = widget.faculty;
+    _yearController.text = widget.year;
+    _relationshipStatusController.text = widget.relationshipStatus;
+    _interestsController.text = widget.interests;
+    _favCuisineController.text = widget.favCuisine;
   }
 
   List<User> usersList = List<User>();
@@ -138,7 +148,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
           .deleteUser(currentUser.uid);
   }
 
-  updateProfileData() {
+  updateProfileData() { //ad faculty, year, relstat, interests, and fav cuisine
     setState(() {
       _nameController.text.trim().length < 3 || _nameController.text.isEmpty
           ? _displayNameValid = false
@@ -151,7 +161,8 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
     if (_displayNameValid && _bioValid) {
       _repository
           .updateDetails(currentUser.uid, _nameController.text,
-              _bioController.text, _emailController.text, _phoneController.text)
+              _bioController.text, _emailController.text, _phoneController.text, _facultyController.text, _yearController.text,
+          _relationshipStatusController.text)
           .then((v) {
         _showPopUpDialog(context, "Are Your Changes Finalized?",
             "This will save all changes");
@@ -268,7 +279,43 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                   ),
                 ),
               ),
-            ]),
+             Padding(
+               padding:
+                 const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+               child: TextField(
+                 controller: _facultyController,
+                 decoration: InputDecoration(
+                   hintText: 'Add your Faculty',
+                   labelText: 'Faculty',
+                   labelStyle: TextStyle(color: Colors.red[900], fontSize : 20),
+                 )
+               )
+             ) ,
+        Padding(
+            padding:
+            const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+            child: TextField(
+                controller: _yearController,
+                decoration: InputDecoration(
+                  hintText: 'Add your Year',
+                  labelText: 'Year',
+                  labelStyle: TextStyle(color: Colors.red[900], fontSize : 20),
+                )
+            )
+        ) ,
+        Padding(
+            padding:
+            const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+            child: TextField(
+                controller: _relationshipStatusController,
+                decoration: InputDecoration(
+                  hintText: 'Add your relationship status',
+                  labelText: 'Relationship Status',
+                  labelStyle: TextStyle(color: Colors.red[900], fontSize : 20),
+                )
+            )
+        ) ,
+      ]),
     );
   }
 

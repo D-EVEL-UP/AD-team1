@@ -82,8 +82,8 @@ class Repository with ChangeNotifier {
       _firebaseProvider.updatePhoto(photoUrl, uid);
 
   Future<void> updateDetails(
-          String uid, String name, String bio, String email, String phone) =>
-      _firebaseProvider.updateDetails(uid, name, bio, email, phone);
+          String uid, String name, String bio, String email, String phone, String faculty, String year, String relationshipStatus) =>
+      _firebaseProvider.updateDetails(uid, name, bio, email, phone, faculty, year, relationshipStatus);
 
   Future<List<appuser.User>> fetchAllUsersWithUser(appuser.User user) =>
       _firebaseProvider.fetchAllUsersWithUser(user);

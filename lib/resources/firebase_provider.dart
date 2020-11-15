@@ -42,6 +42,12 @@ class FirebaseProvider with ChangeNotifier {
         phone: '',
         bio: "Hey! I'm new to this app! Let's Dyne!",
         lastTime: Timestamp.now(),
+        faculty: "",
+        year: "",
+        relationshipStatus: "",
+        interests: [],
+        favCuisines: [],
+        points: [[]], //not sure if this is how to write an empty 2d array
         referralUid: "");
     await _fireStore
         .collection("users")
@@ -300,12 +306,15 @@ class FirebaseProvider with ChangeNotifier {
   }
 
   Future<void> updateDetails(
-      String uid, String name, String bio, String email, String phone) async {
+      String uid, String name, String bio, String email, String phone, String faculty, String year, String relationshipStatus) async {
     Map<String, dynamic> map = Map();
     map['displayName'] = name;
     map['bio'] = bio;
     map['email'] = email;
     map['phone'] = phone;
+    map['faculty'] = faculty;
+    map['year'] = year;
+    map['relationshipStatus'] = relationshipStatus;
     return await _fireStore.collection("users").doc(uid).update(map);
   }
 
