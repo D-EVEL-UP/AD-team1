@@ -52,8 +52,44 @@ class _SearchScreenState extends State<SearchScreen> {
     }
   }
 
+  Container filters(String heading){
+    return Container(
+      width: 160.0,
+      child:Card(
+        child:Wrap(
+          children: <Widget>[
+            ListTile(
+              title: Text(heading),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  //builds a filter tab
+  Widget buildFilters(BuildContext context) {
+    return Scaffold(
+      body: Container(
+            margin: EdgeInsets.symmetric(vertical: 20.0),
+            height: 50,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+             children: <Widget>[
+               filters("Faculty"),
+               filters("Year"),
+               filters("Relationship Status"),
+               filters("Intersts"),
+               filters("Favourite Cuisine"),
+            ],
+          ),
+        ), //I don't know what's wrong here
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    buildFilters(context);
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -122,6 +158,7 @@ class UserSearch extends SearchDelegate<String> {
     keyboardType: TextInputType.text,
     textInputAction: TextInputAction.search,
   );
+
 
   @override
   List<Widget> buildActions(BuildContext context) {

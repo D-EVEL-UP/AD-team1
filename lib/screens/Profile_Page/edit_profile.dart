@@ -29,6 +29,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _facultyController = TextEditingController();
+  final TextEditingController _yearController = TextEditingController();
+  final TextEditingController _relationshipStatusController = TextEditingController();
   bool _displayNameValid = true;
   bool _bioValid = true;
 
@@ -136,7 +139,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     if (_displayNameValid && _bioValid) {
       _repository
           .updateDetails(currentUser.uid, _nameController.text,
-              _bioController.text, _emailController.text, _phoneController.text)
+              _bioController.text, _emailController.text, _phoneController.text, _facultyController.text, _yearController.text, _relationshipStatusController.text)
           .then((v) {
         widget.name = _nameController.text;
         widget.bio = _bioController.text;
