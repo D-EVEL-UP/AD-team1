@@ -163,7 +163,12 @@ class UserSearch extends SearchDelegate<String> {
 
     final List<User> suggestionsList = query.isEmpty
         ? emptyList
-        : usersList.where((p) => p.displayName.toLowerCase().startsWith(query.toLowerCase())).toList();
+        : usersList.where((p) =>
+                p.displayName.toLowerCase().contains(query.toLowerCase()) ||
+                p.interests.contains(query.toLowerCase()) ||
+                p.favCuisines.contains(query.toLowerCase()) ||
+                p.faculty.toLowerCase().contains(query.toLowerCase()))
+            .toList();
     return ListView.builder(
       itemCount: suggestionsList.length,
       itemBuilder: ((context, index) => ListTile(
