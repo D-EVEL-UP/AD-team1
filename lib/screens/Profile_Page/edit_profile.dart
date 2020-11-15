@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import '../../models/user.dart' as appuser;
 import '../../resources/repository.dart';
@@ -9,6 +8,7 @@ import 'package:image/image.dart' as Im;
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'interests.dart';
 
 /*This class allows the user to edit their photo, display name, bio, email and
 * phone #*/
@@ -257,7 +257,27 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                 ),
               ),
+
             ]),
+        bottomSheet: GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Interests()));
+          },
+          child: Container(
+            height: 60,
+            color: Colors.red[700],
+            child: Center(
+              child: Text(
+                "Next",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 30,
+                ),
+              ),
+            ),
+          ),
+        )
     );
   }
 
