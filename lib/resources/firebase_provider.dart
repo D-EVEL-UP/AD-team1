@@ -45,9 +45,9 @@ class FirebaseProvider with ChangeNotifier {
         faculty: "",
         year: "",
         relationshipStatus: "",
-        interests: [],
-        favCuisines: [],
-        points: [[]], //not sure if this is how to write an empty 2d array
+        //interests: [],
+        //favCuisines: [],
+        //points: [[]], //not sure if this is how to write an empty 2d array
         referralUid: "");
     await _fireStore
         .collection("users")

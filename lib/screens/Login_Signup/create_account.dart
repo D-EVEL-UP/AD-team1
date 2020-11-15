@@ -16,10 +16,10 @@ import 'package:provider/provider.dart';
 * the referral user screen */
 
 class CreateProfileScreen extends StatefulWidget {
-  final String photoUrl, email, bio, name, phone, faculty, year, relationshipStatus, interests, favCuisine;
+  final String photoUrl, email, bio, name, phone, faculty, year, relationshipStatus; /*interests, favCuisine;*/
 
   CreateProfileScreen(
-      {this.photoUrl, this.email, this.bio, this.name, this.phone, this.faculty, this.year, this.relationshipStatus, this.interests, this.favCuisine});
+      {this.photoUrl, this.email, this.bio, this.name, this.phone, this.faculty, this.year, this.relationshipStatus/* this.interests, this.favCuisine*/});
 
   @override
   _CreateProfileScreenState createState() => _CreateProfileScreenState();
@@ -35,8 +35,8 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
   final TextEditingController _facultyController = TextEditingController();
   final TextEditingController _yearController = TextEditingController();
   final TextEditingController _relationshipStatusController = TextEditingController();
-  final TextEditingController _interestsController = TextEditingController();
-  final TextEditingController _favCuisineController = TextEditingController();
+  //final TextEditingController _interestsController = TextEditingController();
+  //final TextEditingController _favCuisineController = TextEditingController();
   bool _displayNameValid = true;
   bool _bioValid = true;
 
@@ -50,8 +50,8 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
     _facultyController.text = widget.faculty;
     _yearController.text = widget.year;
     _relationshipStatusController.text = widget.relationshipStatus;
-    _interestsController.text = widget.interests;
-    _favCuisineController.text = widget.favCuisine;
+    //_interestsController.text = widget.interests;
+   // _favCuisineController.text = widget.favCuisine;
   }
 
   List<User> usersList = List<User>();
